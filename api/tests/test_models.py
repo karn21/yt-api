@@ -4,6 +4,7 @@ from ..models import Video
 
 class ModelTestCase(TestCase):
 
+    # create video object test
     def setUp(self):
         Video.objects.create(title="Title", description="New Description",
                              publish_timestamp="2020-09-09T05:05:24Z",

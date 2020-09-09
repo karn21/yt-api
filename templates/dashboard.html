@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>DashBoard - YT API</title>
+    {% comment %} BootStrap css {% endcomment %}
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <center>
+        <h2 class="m-3">Video Dashboard</h2>
+        <h4>{{videos.count}} Videos</h4>
+      </center>
+
+      <form class="my-5" method="POST" action=".">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="search"
+                name="search"
+                placeholder="Search here"
+              />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <select class="form-control" name="order_field">
+                <option value="">Order By</option>
+                <option value="title">Title</option>
+                <option value="description">Description</option>
+                <option value="publish_timestamp">Publish Date</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <select class="form-control" name="order">
+                <option value="ascending">Ascending</option>
+                <option value="descending">Descending</option>
+              </select>
+            </div>
+          </div>
+          <div class="col col-md-2">
+            <button type="submit" class="btn btn-primary btn-block">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div class="row">
+        {% for video in videos %}
+        <div class="col col-md-4">
+          <div class="card my-1">
+            <img
+              src="{{video.thumbnail_url}}"
+              class="card-img-top"
+              alt="video thumbnail"
+            />
+            <div class="card-body">
+              <p class="card-title"><b>{{video.title|truncatechars:50}}</b></p>
+              <p class="card-text">{{video.description|truncatechars:100}}</p>
+              <div class="small">{{video.publish_timestamp}}</div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
