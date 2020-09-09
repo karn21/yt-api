@@ -5,6 +5,7 @@ from .models import Video
 from background_task import background
 from rest_framework import generics
 from .serializers import VideoSerializer
+from django.db.models import Q
 
 
 def home(request):
@@ -14,6 +15,7 @@ def home(request):
 @background()
 def fetch_videos():
   print("started")
+  # get last video
   video = Video.objects.first()
   url = "https://www.googleapis.com/youtube/v3/search"
   params = {
@@ -52,6 +54,22 @@ def create_video(video):
 
 # GET all API view
 class VideoView(generics.ListAPIView):
-  queryset = Video.objects.all()
   serializer_class = VideoSerializer
+
+  def get_queryset(self):
+    queryset = Video.objects.all()
+    # get query string
+    query = self.request.query_params.get('search',None)
+    if query:
+      # filter with original query string
+      final_qs = queryset.filter(Q(title__icontains=query)|Q(description__icontains=query)).distinct()
+      # split query string
+      query = query.split(" ")
+      # search with each query string
+      for q in query:
+        qs = queryset.filter(Q(title__icontains=q)|Q(description__icontains=q)).distinct()
+        final_qs = (qs|final_qs).distinct()
+      return final_qs
+    return queryset
+  
 

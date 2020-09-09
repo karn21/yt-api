@@ -1,7 +1,5 @@
 from django.db import models
 
-
-
 class Video(models.Model):
   title = models.TextField()
   description = models.TextField()
