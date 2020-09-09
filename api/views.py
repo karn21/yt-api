@@ -7,9 +7,7 @@ from rest_framework import generics
 from .serializers import VideoSerializer
 from django.db.models import Q
 
-
-def home(request):
-  return HttpResponse("Videos fetched")
+############################################### Background Views ###################################
 
 # fetch yt videos view
 @background()
@@ -52,7 +50,11 @@ def create_video(video):
     Video.objects.create(title=title,description=description,publish_timestamp=timestamp,video_id=video_id,thumbnail_url=thumbnail)
 
 
-# GET all API view
+
+
+########################################### API VIEWS ############################################
+
+# GET API view
 class VideoView(generics.ListAPIView):
   serializer_class = VideoSerializer
 

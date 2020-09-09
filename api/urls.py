@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home,VideoView
+from .views import VideoView
 
 app_name="api"
 
