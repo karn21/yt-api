@@ -1,5 +1,7 @@
 # yt-api  [![Build Status](https://travis-ci.org/karn21/yt-api.svg?branch=master)](https://travis-ci.org/karn21/yt-api)
 
+![Dashboard](https://github.com/karn21/yt-api/blob/master/etc/dashboard-screenshot.png)
+
 ## Local setup
 1. Clone this repository.
 2. Create a virtual env.
@@ -17,3 +19,4 @@
     `python manage.py process_tasks`
     
 7. Visit http://localhost:8000/dashboard in your browser to view dashboard or use postman for testing apis.
+
