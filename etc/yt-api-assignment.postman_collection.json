@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "40c25a5c-04d1-4fdc-8f39-86963227305c",
+		"name": "yt-api-assignment",
+		"description": "API collection for FamPay backend assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/videos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"videos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Paginated Videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/videos/?page=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"videos",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Searched Video",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/videos/?search=cricket",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"videos",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "cricket"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Searched Video Paginated",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/videos/?search=cricket&page=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"videos",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "cricket"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get multiple query search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/videos/?search=world cup fantasy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"videos",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "world cup fantasy"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
