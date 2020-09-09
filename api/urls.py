@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import fetch_videos
+from .views import home
 
 app_name="api"
 
 urlpatterns = [
-    path("fetch/",fetch_videos,name="fetch_videos")
+    path("fetch/",home,name="fetch_videos")
 ]
