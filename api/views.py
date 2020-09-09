@@ -3,6 +3,8 @@ import requests
 from django.http import HttpResponse
 from .models import Video
 from background_task import background
+from rest_framework import generics
+from .serializers import VideoSerializer
 
 
 def home(request):
@@ -48,5 +50,8 @@ def create_video(video):
     Video.objects.create(title=title,description=description,publish_timestamp=timestamp,video_id=video_id,thumbnail_url=thumbnail)
 
 
-
+# GET all API view
+class VideoView(generics.ListAPIView):
+  queryset = Video.objects.all()
+  serializer_class = VideoSerializer
 
